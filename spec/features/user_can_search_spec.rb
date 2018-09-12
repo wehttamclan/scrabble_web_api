@@ -10,6 +10,7 @@ feature 'guest user' do
 # And I click "Validate Word"
     click_on "Validate Word"
 # Then I should see a message that says "'foxes' is a valid word and its root form is 'fox'."
+    expect(current_path).to eq(validate_word_path)
     expect(page).to have_content("'foxes' is a valid word and its root form is 'fox'.")
   end
 end
