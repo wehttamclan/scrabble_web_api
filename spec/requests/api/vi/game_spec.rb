@@ -23,5 +23,4 @@ describe "GET /games/1" do
 #   ]
 # }```
   end
-
 end
