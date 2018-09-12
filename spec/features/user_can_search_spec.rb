@@ -13,4 +13,15 @@ feature 'guest user' do
     expect(current_path).to eq(validate_word_path)
     expect(page).to have_content("'foxes' is a valid word and its root form is 'fox'.")
   end
+  scenario 'can search' do
+# As a guest user
+# When I visit "/"
+    visit root_path
+# And I fill in a text box with "foxez"
+    fill_in :word, with: "foxez"
+# And I click "Validate Word"
+    click_on "Validate Word"
+# Then I should see a message that says "'foxez' is not a valid word."  end
+    expect(page).to have_content("'foxez' is not a valid word.")
+  end
 end

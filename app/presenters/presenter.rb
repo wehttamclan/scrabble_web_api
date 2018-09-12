@@ -5,32 +5,23 @@ class Presenter
   end
 
   def singular?
-    if service.inflections
-      service.inflections[:results]
-      .first[:lexicalEntries]
-      .first[:inflectionOf]
-      .first[:text] == "#{word}"
-    else
-      nil
-    end
+    root_word == "#{word}"
   end
 
   def root_word
-    if service.inflections
-      service.inflections[:results]
-      .first[:lexicalEntries]
-      .first[:inflectionOf]
-      .first[:text]
-    else
-      nil
-    end
+    service.inflections[:results]
+    .first[:lexicalEntries]
+    .first[:inflectionOf]
+    .first[:text]
   end
 
   def validate
-    if singular?
-      "'#{root_word}' is a valid word."
-    elsif !singular?
-      "'#{word}' is a valid word and its root form is '#{root_word}'."
+    if service.inflections
+      if singular?
+        "'#{root_word}' is a valid word."
+      elsif !singular?
+        "'#{word}' is a valid word and its root form is '#{root_word}'."
+      end
     else
       "'#{word}' is not a valid word."
     end

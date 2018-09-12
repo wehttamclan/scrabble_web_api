@@ -6,7 +6,7 @@ class OxfordService
 
 
   def inflections
-    if response.status == "404"
+    if response.status == 404
       nil
     else
       JSON.parse(response.body, symbolize_names: true)
