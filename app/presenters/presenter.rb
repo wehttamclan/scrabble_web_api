@@ -1,11 +1,18 @@
 class Presenter
 
-  def initialize(word)
-    @word = word
+  def initialize(search_params)
+    @word = search_params[:word]
   end
 
-  def valid?
-    service.inflections
+  def plural?
+    service.inflections[:results]
+    .first[:lexicalEntries]
+    .first[:grammaticalFeatures]
+    .first[:text] == "Plural"
+  end
+
+  def validate
+
   end
 
   private

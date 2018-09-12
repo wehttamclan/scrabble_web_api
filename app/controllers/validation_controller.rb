@@ -1,10 +1,10 @@
 class ValidationController < ApplicationController
   def index
-    @presenter = Presenter.new(word_params)
+    @presenter = Presenter.new(search_params)
   end
 
   private
-  def word_params
+  def search_params
     params.permit(:word)
   end
 end

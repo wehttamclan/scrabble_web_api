@@ -13,7 +13,6 @@ class OxfordService
   attr_reader :word
 
   def response
-    byebug
     conn.get("/api/v1/inflections/en/#{word}")
   end
 
