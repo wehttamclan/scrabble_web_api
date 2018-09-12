@@ -4,12 +4,12 @@ class Presenter
     @word = search_params[:word]
   end
 
-  def plural?
+  def singular?
     if service.inflections
       service.inflections[:results]
       .first[:lexicalEntries]
-      .first[:grammaticalFeatures]
-      .first[:text] == "Plural"
+      .first[:inflectionOf]
+      .first[:text] == "#{word}"
     else
       nil
     end
@@ -27,10 +27,10 @@ class Presenter
   end
 
   def validate
-    if plural?
-      "'#{word}' is a valid word and its root form is '#{root_word}'."
-    elsif root_word && (word == root_word)
+    if singular?
       "'#{root_word}' is a valid word."
+    elsif !singular?
+      "'#{word}' is a valid word and its root form is '#{root_word}'."
     else
       "'#{word}' is not a valid word."
     end
