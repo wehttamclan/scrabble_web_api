@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem "figaro" # bundle exec figaro install
+gem 'faraday'
+gem 'active_model_serializers', '~> 0.10.0'
 
 
 group :development, :test do
